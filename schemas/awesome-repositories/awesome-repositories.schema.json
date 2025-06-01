@@ -5,6 +5,39 @@
   "description": "Schema for validating awesome repositories configuration file structure",
   "type": "object",
   "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "JSON Schema reference URL"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Metadata about the repositories collection",
+      "properties": {
+        "version": {
+          "type": "string",
+          "description": "Version of the repositories collection"
+        },
+        "author": {
+          "type": "string",
+          "description": "Author of the repositories collection"
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the repositories collection"
+        },
+        "created": {
+          "type": "string",
+          "format": "date",
+          "description": "Creation date"
+        },
+        "updated": {
+          "type": "string",
+          "format": "date",
+          "description": "Last update date"
+        }
+      },
+      "additionalProperties": true
+    },
     "categories": {
       "type": "array",
       "description": "List of software categories",
