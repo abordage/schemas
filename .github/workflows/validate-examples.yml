@@ -1,0 +1,47 @@
+name: Validate Schema Examples
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  validate-examples:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Validate awesome-repositories valid example
+      uses: cardinalby/schema-validator-action@v3
+      with:
+        file: 'examples/awesome-repositories/valid-example.yaml'
+        schema: 'schemas/awesome-repositories/awesome-repositories.schema.json'
+        mode: 'default'
+    
+    - name: Test invalid example should fail
+      id: validate-invalid
+      uses: cardinalby/schema-validator-action@v3
+      continue-on-error: true
+      with:
+        file: 'examples/awesome-repositories/invalid-example.yaml'
+        schema: 'schemas/awesome-repositories/awesome-repositories.schema.json'
+        mode: 'default'
+    
+    - name: Check that invalid example actually failed
+      run: |
+        if [ "${{ steps.validate-invalid.outcome }}" = "success" ]; then
+          echo "❌ ERROR: Invalid example should have failed validation!"
+          exit 1
+        else
+          echo "✅ SUCCESS: Invalid example correctly failed validation"
+        fi
+    
+    - name: Validate schema using embedded $schema property
+      uses: cardinalby/schema-validator-action@v3
+      with:
+        file: 'examples/awesome-repositories/valid-example.yaml'
+        # No schema parameter - will use $schema property from file 
