@@ -81,10 +81,23 @@ Use the [schema-validation-action](https://github.com/marketplace/actions/schema
 
 ## Validation Rules
 
+### Basic Rules
 - URLs must match GitHub repository pattern
 - Category and subcategory names cannot be empty
 - Subcategories must contain at least one repository
 - Root object must contain at least one category
+- Repository arrays (`repos`) cannot be empty - must contain at least one repository when present
+
+### Uniqueness Constraints
+- **Category names** must be unique within the `categories` array
+- **Subcategory names** must be unique within each parent category
+- **Repository objects** must be unique within each `repos` array
+
+### Uniqueness Limitations
+**Note**: JSON Schema Draft 7 uses `uniqueItems` which compares entire objects for equality. This means:
+- For repositories: The entire repository object (url, name, description) must be identical to be considered duplicate
+- For categories/subcategories: The entire object must be identical to be considered duplicate
+- For field-specific uniqueness (e.g., only URL uniqueness), additional validation tools may be needed
 
 ## Examples
 

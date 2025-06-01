@@ -40,11 +40,12 @@
     },
     "categories": {
       "type": "array",
-      "description": "List of software categories",
+      "description": "List of software categories. Category names must be unique within this array.",
       "items": {
         "$ref": "#/definitions/category"
       },
-      "minItems": 1
+      "minItems": 1,
+      "uniqueItems": true
     }
   },
   "required": ["categories"],
@@ -55,7 +56,7 @@
       "properties": {
         "name": {
           "type": "string",
-          "description": "Category name",
+          "description": "Category name (must be unique within categories array)",
           "minLength": 1
         },
         "description": {
@@ -64,17 +65,20 @@
         },
         "repos": {
           "type": "array",
-          "description": "List of repositories in this category",
+          "description": "List of repositories in this category. Repositories must be unique within this array.",
           "items": {
             "$ref": "#/definitions/repository"
-          }
+          },
+          "minItems": 1,
+          "uniqueItems": true
         },
         "subcategories": {
           "type": "array",
-          "description": "Optional subcategories",
+          "description": "Optional subcategories. Subcategory names must be unique within this category.",
           "items": {
             "$ref": "#/definitions/subcategory"
-          }
+          },
+          "uniqueItems": true
         }
       },
       "required": ["name"],
@@ -85,7 +89,7 @@
       "properties": {
         "name": {
           "type": "string",
-          "description": "Subcategory name",
+          "description": "Subcategory name (must be unique within parent category)",
           "minLength": 1
         },
         "description": {
@@ -94,11 +98,12 @@
         },
         "repos": {
           "type": "array",
-          "description": "List of repositories in this subcategory",
+          "description": "List of repositories in this subcategory. Repositories must be unique within this array.",
           "items": {
             "$ref": "#/definitions/repository"
           },
-          "minItems": 1
+          "minItems": 1,
+          "uniqueItems": true
         }
       },
       "required": ["name", "repos"],
