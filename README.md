@@ -66,6 +66,10 @@ You can also validate multiple files at once:
 3. Create documentation in `docs/{schema-name}.md`
 4. Update this README
 
+## TODO
+
+- [ ] Submit awesome-repositories schema to [SchemaStore](https://github.com/SchemaStore/schemastore) for wider community access
+
 ## License
 
 [MIT License](LICENSE)
