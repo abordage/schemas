@@ -1,0 +1,8 @@
+# Example of invalid file - for validation error demonstration
+categories:
+  - name: ""  # Error: empty name
+    repos:
+      - url: "not-a-valid-url"  # Error: invalid URL format
+      - description: "Missing URL"  # Error: missing required field 'url'
+  - repos:  # Error: missing required field 'name'
+      - url: "https://github.com/example/repo" 
