@@ -4,7 +4,8 @@ JSON schema for validating awesome repositories configuration files.
 
 ## Description
 
-This schema is designed to validate YAML/JSON files containing structured catalogs of repositories organized by categories and subcategories.
+This schema is designed to validate YAML/JSON files containing structured catalogs
+of repositories organized by categories and subcategories.
 
 ## Usage
 
@@ -21,7 +22,8 @@ categories:
 
 ### CI/CD Integration
 
-Use the [schema-validation-action](https://github.com/marketplace/actions/schema-validation-action) for automated validation in your workflows:
+Use the [schema-validation-action](https://github.com/marketplace/actions/schema-validation-action)
+for automated validation in your workflows:
 
 ```yaml
 # Validate single file
