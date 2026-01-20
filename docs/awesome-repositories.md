@@ -50,43 +50,43 @@ Use the [schema-validation-action](https://github.com/marketplace/actions/schema
 
 ### Root Object
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `categories` | array | ✓ | Array of repository categories |
+| Field        | Type  | Required | Description                    |
+|--------------|-------|----------|--------------------------------|
+| `categories` | array | ✓        | Array of repository categories |
 
 ### Category
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `name` | string | ✓ | Category name |
-| `description` | string | ✗ | Category description |
-| `repos` | array | ✗ | Array of repositories |
-| `subcategories` | array | ✗ | Array of subcategories |
+| Field           | Type   | Required | Description            |
+|-----------------|--------|----------|------------------------|
+| `name`          | string | ✓        | Category name          |
+| `description`   | string | ✗        | Category description   |
+| `repos`         | array  | ✗        | Array of repositories  |
+| `subcategories` | array  | ✗        | Array of subcategories |
 
 ### Subcategory
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `name` | string | ✓ | Subcategory name |
-| `description` | string | ✗ | Subcategory description |
-| `repos` | array | ✓ | Array of repositories |
+| Field         | Type   | Required | Description             |
+|---------------|--------|----------|-------------------------|
+| `name`        | string | ✓        | Subcategory name        |
+| `description` | string | ✗        | Subcategory description |
+| `repos`       | array  | ✓        | Array of repositories   |
 
 ### Repository
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `url` | string | ✓ | GitHub repository URL |
-| `name` | string | ✗ | Custom repository name |
-| `description` | string | ✗ | Repository description |
+| Field         | Type   | Required | Description            |
+|---------------|--------|----------|------------------------|
+| `url`         | string | ✓        | GitHub repository URL  |
+| `name`        | string | ✗        | Custom repository name |
+| `description` | string | ✗        | Repository description |
 
 ## Validation Rules
 
 ### Basic Rules
-- URLs must match GitHub repository pattern
+- URLs must match the GitHub repository pattern
 - Category and subcategory names cannot be empty
 - Subcategories must contain at least one repository
 - Root object must contain at least one category
-- Repository arrays (`repos`) cannot be empty - must contain at least one repository when present
+- Repository arrays (`repos`) cannot be empty – must contain at least one repository when present
 
 ### Uniqueness Constraints
 - **Category names** must be unique within the `categories` array
