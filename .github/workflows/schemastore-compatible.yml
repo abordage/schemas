@@ -1,0 +1,42 @@
+name: SchemaStore Compatible
+
+on:
+  push:
+    paths:
+      - 'schemas/**'
+      - 'examples/**'
+      - 'scripts/schemastore-compatible.mjs'
+  pull_request:
+    paths:
+      - 'schemas/**'
+      - 'examples/**'
+      - 'scripts/schemastore-compatible.mjs'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Ajv Strict Mode
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm install ajv ajv-formats yaml
+
+      - name: Validate schemas
+        run: node scripts/schemastore-compatible.mjs
