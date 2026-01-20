@@ -4,16 +4,16 @@ Collection of JSON schemas for validating configuration files and data structure
 
 ## Project Structure
 
-```
+```text
 schemas/
-├── schemas/                    # JSON schemas
+├── schemas/
 │   └── awesome-repositories/
 │       └── awesome-repositories.schema.json
-├── examples/                   # Usage examples
+├── examples/
 │   └── awesome-repositories/
 │       ├── valid-example.yaml
 │       └── invalid-example.yaml
-├── docs/                      # Schema documentation
+├── docs/
 │   └── awesome-repositories.md
 └── README.md
 ```
@@ -21,6 +21,7 @@ schemas/
 ## Available Schemas
 
 ### Awesome Repositories Schema
+
 - **File**: `schemas/awesome-repositories/awesome-repositories.schema.json`
 - **Purpose**: Validation of repository catalogs with categories and subcategories
 - **Documentation**: [docs/awesome-repositories.md](docs/awesome-repositories.md)
@@ -38,7 +39,8 @@ Add to the beginning of your YAML file:
 
 ### CI/CD Integration
 
-Use the [schema-validation-action](https://github.com/marketplace/actions/schema-validation-action) for automated validation:
+Use the [schema-validation-action](https://github.com/marketplace/actions/schema-validation-action)
+for automated validation:
 
 ```yaml
 # GitHub Actions example
@@ -68,7 +70,8 @@ You can also validate multiple files at once:
 
 ## TODO
 
-- [ ] Submit awesome-repositories schema to [SchemaStore](https://github.com/SchemaStore/schemastore) for wider community access
+- [ ] Submit awesome-repositories schema to [SchemaStore](https://github.com/SchemaStore/schemastore)
+  for wider community access
 
 ## License
 
